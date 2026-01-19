@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+require('dotenv').config();
+
 // Routes
 const userRoutes = require('./routes/userRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -17,7 +19,7 @@ const app = express();
 // Security
 app.use(helmet());
 
-// ✅ CORS (Render + Browser friendly)
+// ✅ CORS (Render ke liye simple)
 app.use(cors({
   origin: '*',
 }));
@@ -39,7 +41,7 @@ app.use('/api/schemes', schemeRoutes);
 app.use('/api/eligibilities', eligibilityRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Test route (OPTIONAL – debugging ke liye)
+// Test route
 app.get('/', (req, res) => {
   res.send('Backend is running');
 });
